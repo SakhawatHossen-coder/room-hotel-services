@@ -13,7 +13,7 @@ const RoomCard = ({ room }) => {
   const desc = room["Room Description"];
   //   console.log(roomImages);
   return (
-    <Link>
+    <Link to={`/rooms/${room._id}`}>
       <Card className="mt-6 w-96">
         <CardHeader color="blue-gray" className="relative h-56">
           <img src={roomImages[0]} alt="card-image" />

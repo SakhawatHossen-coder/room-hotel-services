@@ -4,7 +4,10 @@ const RoomSearch = () => {
   return (
     <div>
       <div className="w-72">
-        <Input label="Input With Icon" icon={<i className="fas fa-search" />} />
+        <Input
+          label="Search Your Room"
+          icon={<i className="" />}
+        />
       </div>
     </div>
   );
