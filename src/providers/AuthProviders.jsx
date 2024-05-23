@@ -8,14 +8,14 @@ import {
   signOut,
   updateCurrentUser,
 } from "firebase/auth";
-import React, {  useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 
 const auth = getAuth(app);
 
 const googleProvider = new GoogleAuthProvider();
 
-export const AuthContext=create
+export const AuthContext = createContext(null);
 const AuthProviders = ({ childern }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
@@ -61,7 +61,9 @@ const AuthProviders = ({ childern }) => {
     googleLogin,
     updateUserProfile,
   };
-return <AuthC
+  return (
+    <AuthContext.Provider value={userInfo}>{childern}</AuthContext.Provider>
+  );
 };
 
 export default AuthProviders;
