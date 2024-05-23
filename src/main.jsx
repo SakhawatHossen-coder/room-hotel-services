@@ -8,8 +8,8 @@ import AuthProviders from "./providers/AuthProviders.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <App/> */}
-    {/* <AuthProviders> */}
+    <AuthProviders>
     <RouterProvider router={router}></RouterProvider>
-    {/* </AuthProviders> */}
+    </AuthProviders>
   </React.StrictMode>
 );

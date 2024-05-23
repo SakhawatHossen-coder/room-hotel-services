@@ -1,0 +1,63 @@
+[
+  {
+    "Room Description": "Deluxe King Room with Balcony",
+    "Price per Night": 150.00,
+    "Room Size": "35 sqm",
+    "Availability": true,
+    "Room Images": [
+      "https://images.unsplash.com/photo-1462826303086-329426d1aef5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8RGVsdXhlJTIwS2luZyUyMFJvb20lMjB3aXRoJTIwQmFsY29ueXxlbnwwfHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1453498798285-d5a1be7fab6e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fERlbHV4ZSUyMEtpbmclMjBSb29tJTIwd2l0aCUyMEJhbGNvbnl8ZW58MHx8MHx8fDA%3D"
+    ],
+    "Special Offers": []
+  },
+  {
+    "Room Description": "Standard Twin Room",
+    "Price per Night": 100.00,
+    "Room Size": "25 sqm",
+    "Availability": false,
+    "Room Images": ["https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8U3RhbmRhcmQlMjBUd2luJTIwUm9vbXxlbnwwfHwwfHx8MA%3D%3D"],
+    "Special Offers": []
+  },
+  {
+    "Room Description": "Suite with Ocean View",
+    "Price per Night": 250.00,
+    "Room Size": "50 sqm",
+    "Availability": true,
+    "Room Images": [
+      "https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8U3VpdGUlMjB3aXRoJTIwT2NlYW4lMjBWaWV3fGVufDB8fDB8fHww",
+      "https://plus.unsplash.com/premium_photo-1705756177169-22ac6a8af7ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8U3VpdGUlMjB3aXRoJTIwT2NlYW4lMjBWaWV3fGVufDB8fDB8fHww",
+      "images/suite_ocean_view_bathroom.jpg"
+    ],
+    "Special Offers": [
+      "Free breakfast for two for the entire stay"
+    ]
+  },
+  {
+    "Room Description": "Accessible Queen Room",
+    "Price per Night": 120.00,
+    "Room Size": "30 sqm",
+    "Availability": true,
+    "Room Images": ["https://plus.unsplash.com/premium_photo-1661846577575-560fd37a2a19?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fEFjY2Vzc2libGUlMjBRdWVlbiUyMFJvb218ZW58MHx8MHx8fDA%3D"],
+    "Special Offers": []
+  },
+  {
+    "Room Description": "Family Room with Bunk Beds",
+    "Price per Night": 180.00,
+    "Room Size": "40 sqm",
+    "Availability": true,
+    "Room Images": ["https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFtaWx5JTIwUm9vbSUyMHdpdGglMjBCdW5rJTIwQmVkc3xlbnwwfHwwfHx8MA%3D%3D"],
+    "Special Offers": [
+      "Complimentary welcome pack for children"
+    ]
+  },
+  {
+    "Room Description": "Studio Apartment",
+    "Price per Night": 200.00,
+    "Room Size": "45 sqm",
+    "Availability": false,
+    "Room Images": ["https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8U3R1ZGlvJTIwQXBhcnRtZW50fGVufDB8fDB8fHww"],
+    "Special Offers": [
+      "Kitchenette included, perfect for longer stays"
+    ]
+  }
+]
