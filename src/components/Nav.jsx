@@ -13,18 +13,34 @@ const Nav = () => {
           </Button>
         </li>
       </NavLink>
-      <NavLink to="/allfoodpage">
+      <NavLink to="/rooms">
         <li>
           <Button color="cyan" className="btn pop">
-            All Foods
+            Rooms
           </Button>
         </li>
       </NavLink>
-      <NavLink to="/gallery">
+      <NavLink to="/bookings">
         <li>
           {" "}
           <Button color="cyan" className="btn pop">
-            Gallery
+            My Bookings
+          </Button>
+        </li>
+      </NavLink>
+      <NavLink to="/about">
+        <li>
+          {" "}
+          <Button color="cyan" className="btn pop">
+            About Us
+          </Button>
+        </li>
+      </NavLink>
+      <NavLink to="/contact">
+        <li>
+          {" "}
+          <Button color="cyan" className="btn pop">
+            Contact Us
           </Button>
         </li>
       </NavLink>
