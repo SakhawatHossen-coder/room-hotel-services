@@ -2,8 +2,9 @@ import React from "react";
 import { Button, Typography } from "@material-tailwind/react";
 
 import { NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 const Nav = () => {
-  const user = null;
+  const { user, logout } = useAuth();
   let navItems = (
     <>
       <NavLink to="/">
@@ -139,7 +140,7 @@ const Nav = () => {
                 </li>
 
                 <li>
-                  <Button color="blue" variant="outlined" onClick={logOut}>
+                  <Button color="blue" variant="outlined" onClick={logout}>
                     <span className="pop">Logout</span>
                   </Button>
                 </li>

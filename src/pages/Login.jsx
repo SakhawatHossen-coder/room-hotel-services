@@ -1,7 +1,41 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const { login, loading, setLoading, googleLogin } = useAuth();
+  const location = useLocation();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (data) => {
+    const { email, password } = data;
+    try {
+      setLoading(true);
+      await login(email, password);
+      navigate(location?.state || "/");
+      toast.success("login successful");
+    } catch (error) {
+      console.error(error);
+      toast.error(err.message);
+      setLoading(false);
+    }
+  };
+  async function handleGoogleLogin() {
+    try {
+      await googleLogin();
+      navigate(location?.state || "/");
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message);
+    }
+  }
   return (
     <div>
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
@@ -51,9 +85,12 @@ export const Login = () => {
               </svg>
             </div>
 
-            <span className="w-5/6 px-4 py-3 font-bold text-center">
+            <button
+              onClick={handleGoogleLogin}
+              className="w-5/6 px-4 py-3 font-bold text-center"
+            >
               Sign in with Google
-            </span>
+            </button>
           </a>
 
           <div className="flex items-center justify-between mt-4">
@@ -68,50 +105,55 @@ export const Login = () => {
 
             <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
           </div>
-
-          <div className="mt-4">
-            <label
-              className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
-              for="LoggingEmailAddress"
-            >
-              Email Address
-            </label>
-            <input
-              id="LoggingEmailAddress"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
-              type="email"
-            />
-          </div>
-
-          <div className="mt-4">
-            <div className="flex justify-between">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="mt-4">
               <label
                 className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
-                for="loggingPassword"
+                htmlFor="LoggingEmailAddress"
               >
-                Password
+                Email Address
               </label>
-              <a
-                href="#"
-                className="text-xs text-gray-500 dark:text-gray-300 hover:underline"
-              >
-                Forget Password?
-              </a>
+              <input
+                id="LoggingEmailAddress"
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+                type="email"
+                {...register("email", { required: true })}
+              />
             </div>
 
-            <input
-              id="loggingPassword"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
-              type="password"
-            />
-          </div>
+            <div className="mt-4">
+              <div className="flex justify-between">
+                <label
+                  className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+                  htmlFor="loggingPassword"
+                >
+                  Password
+                </label>
+                <a
+                  href="#"
+                  className="text-xs text-gray-500 dark:text-gray-300 hover:underline"
+                >
+                  Forget Password?
+                </a>
+              </div>
 
-          <div className="mt-6">
-            <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-              Sign In
-            </button>
-          </div>
+              <input
+                id="loggingPassword"
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+                type="password"
+                {...register("password", { required: true })}
+              />
+            </div>
 
+            <div className="mt-6">
+              <button
+                type="submit"
+                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+              >
+                Sign In
+              </button>
+            </div>
+          </form>
           <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
 

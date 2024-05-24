@@ -8,9 +8,9 @@ import useAxios from "../hooks/useAxios";
 const image_hosting_key = import.meta.env.VITE_IMGBB;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const Register = () => {
-  const navigate = useNavigate();
-  const { createUser, updateUserProfile, loading, googleLogin, setLoading } =
+     const { createUser, updateUserProfile, loading, googleLogin, setLoading } =
     useAuth();
+     const navigate = useNavigate();
   const {
     register,
     handleSubmit,
