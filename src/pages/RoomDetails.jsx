@@ -55,29 +55,40 @@ const RoomDetails = () => {
               ? room["Special Offers"].join(", ")
               : "No Offer Available"}
           </Typography>
-          {/* <Typography variant="h4" color="blue-gray" className="mb-2">
-          Lyft launching cross-platform service this week
-        </Typography> */}
+
           <Typography color="gray" className="mb-8 font-normal">
             {room["Room Description"]}
           </Typography>
-          <a className="inline-block">
+          <span className="inline-block">
             <Button color="deep-purple" className="flex items-center gap-2">
               Price Per Night : {room["Price per Night"]}
             </Button>
-          </a>
-          <a className="inline-block mx-5">
+          </span>
+          <span className="inline-block mx-5">
             <Button color="green" className="flex items-center gap-2">
               Availability : {room["Availability"] && "Available"}
             </Button>
-          </a>
-          <a className="inline-block my-2">
+          </span>
+          <span className="inline-block my-2">
             <Button color="amber" className="flex items-center gap-2">
               Room Size: {room["Room Size"]}
             </Button>
-          </a>
+          </span>
         </CardBody>
       </Card>
+      <div className="my-5 w-1/2 mx-auto ">
+        <h1 className="text-xl font-semibold uppercase">
+          select your booking date
+        </h1>
+        <div className="flex gap-4">
+          <CiCalendarDate size={24} />
+          <DatePicker
+            className="border-2"
+            selected={startDate}
+            onChange={(date) => setStartDate(date.toLocaleDateString())}
+          />
+        </div>
+      </div>
       <CardFooter className="pt-0 flex justify-center items-center">
         <Button
           color="blue"
@@ -88,19 +99,6 @@ const RoomDetails = () => {
           <ModalForm room={room} startDate={startDate} />
         </Button>
       </CardFooter>
-      <div className="my-5 w-1/2 mx-auto ">
-        <h1 className="text-xl font-semibold uppercase">
-          select your booking date
-        </h1>
-        <div className="flex gap-4">
-          <CiCalendarDate size={24} />
-          <DatePicker
-            className="border-2 "
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
-        </div>
-      </div>
     </>
   );
 };

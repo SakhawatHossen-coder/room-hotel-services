@@ -14,17 +14,15 @@ const ModalForm = ({ room, startDate }) => {
     formState: { errors },
   } = useForm();
   const axiosCommon = useAxios();
-  const onSubmit = async (data) => {
-    
+  const onSubmit = (data) => {
+    // axiosCommon.post(`/bookings`)
+    console.log(data);
   };
   return (
     <>
-      <dialog
-        id="my_modal_5"
-        classNameName="modal modal-bottom sm:modal-middle"
-      >
-        <div classNameName="modal-box">
-          <div classNameName="modal-action">
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <div className="modal-action">
             <form method="dialog" onSubmit={handleSubmit(onSubmit)}>
               <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
                 <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">
@@ -35,7 +33,7 @@ const ModalForm = ({ room, startDate }) => {
                   <div>
                     <label
                       className="text-gray-700 dark:text-gray-200"
-                      for=" Room Price"
+                      htmlFor="Room Price"
                     >
                       Room Price
                     </label>
@@ -44,6 +42,7 @@ const ModalForm = ({ room, startDate }) => {
                       disabled
                       type="number"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                      {...register("price", { required: true })}
                       defaultValue={room["Price per Night"]}
                     />
                   </div>
@@ -51,21 +50,23 @@ const ModalForm = ({ room, startDate }) => {
                   <div>
                     <label
                       className="text-gray-700 dark:text-gray-200"
-                      for="Booking Date"
+                      htmlFor="Booking Date"
                     >
                       Booking Date
                     </label>
                     <input
+                      disabled
                       id="Booking Date"
                       type="text"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                      defaultValue={dateVal}
+                      {...register("bookdate", { required: true })}
+                      defaultValue={startDate}
                     />
                   </div>
                   <div>
                     <label
                       className="text-gray-700 dark:text-gray-200"
-                      for="Availability"
+                      htmlFor="Availability"
                     >
                       Availability
                     </label>
@@ -74,6 +75,7 @@ const ModalForm = ({ room, startDate }) => {
                       type="text"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                       defaultValue={room["Availability"] && "Available"}
+                      {...register("availability", { required: true })}
                     />
                   </div>
                 </div>

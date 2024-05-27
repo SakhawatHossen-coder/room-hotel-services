@@ -6,6 +6,8 @@ import { Login } from "../pages/Login";
 import Rooms from "../pages/Rooms";
 import Register from "../pages/Register";
 import RoomDetails from "../pages/RoomDetails";
+import Statistics from "../pages/dashboard/Statistics";
+import DashboardLayout from "../layout/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -31,5 +33,15 @@ export const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <Statistics />,
+      },
+    ],
   },
 ]);

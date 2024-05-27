@@ -116,26 +116,8 @@ const Nav = () => {
                   </Typography>
                 </li>
                 <li>
-                  <NavLink
-                    to="/myaddedfooditems"
-                    color="blue"
-                    variant="outlined"
-                  >
-                    <span className="pop">My added food items</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/addfooditem" color="blue" variant="outlined">
-                    <span className="pop">Add a food item</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/myorderedfooditems"
-                    color="blue"
-                    variant="outlined"
-                  >
-                    <span className="pop">My ordered food items</span>
+                  <NavLink to="/dashboard" color="blue" variant="outlined">
+                    <span className="pop">Dashboard</span>
                   </NavLink>
                 </li>
 
