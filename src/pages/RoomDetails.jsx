@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardHeader,
@@ -11,7 +11,12 @@ import { useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import ModalForm from "../components/ModalForm";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { CiCalendarDate } from "react-icons/ci";
 const RoomDetails = () => {
+  const [startDate, setStartDate] = useState(new Date());
+
   const { id } = useParams();
   const axiosCommon = useAxios();
   const { data: room = {}, isLoading } = useQuery({
@@ -80,9 +85,22 @@ const RoomDetails = () => {
           onClick={() => document.getElementById("my_modal_5").showModal()}
         >
           Book Now
-          <ModalForm />
+          <ModalForm room={room} startDate={startDate} />
         </Button>
       </CardFooter>
+      <div className="my-5 w-1/2 mx-auto ">
+        <h1 className="text-xl font-semibold uppercase">
+          select your booking date
+        </h1>
+        <div className="flex gap-4">
+          <CiCalendarDate size={24} />
+          <DatePicker
+            className="border-2 "
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+          />
+        </div>
+      </div>
     </>
   );
 };
