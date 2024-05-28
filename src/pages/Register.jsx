@@ -8,9 +8,9 @@ import useAxios from "../hooks/useAxios";
 const image_hosting_key = import.meta.env.VITE_IMGBB;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const Register = () => {
-     const { createUser, updateUserProfile, loading, googleLogin, setLoading } =
+  const { createUser, updateUserProfile, loading, googleLogin, setLoading } =
     useAuth();
-     const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -37,7 +37,7 @@ const Register = () => {
       //     recipe: data.recipe,
       //     image: res.data.data.display_url,
       //   };
-      let image = res.data.data.display_url;
+      let image = res?.data?.data?.display_url;
       console.log(image);
       //
       //   const menuRes = await axiosSecure.post("/menu", menuItem);
@@ -58,13 +58,7 @@ const Register = () => {
       <section className="bg-white dark:bg-gray-900">
         <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
           <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md">
-            <div className="flex justify-center mx-auto">
-              <img
-                className="w-auto h-7 sm:h-8"
-                src="https://merakiui.com/images/logo.svg"
-                alt=""
-              />
-            </div>
+            <div className="flex justify-center mx-auto"></div>
 
             <div className="relative flex items-center mt-8">
               <span className="absolute">

@@ -1,16 +1,87 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
+import useAuth from "../../hooks/useAuth";
+import useAxios from "../../hooks/useAxios";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { Spinner } from "@material-tailwind/react";
+const image_hosting_key = import.meta.env.VITE_IMGBB;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const AddRoomForm = () => {
+  const { user, setLoading, loading } = useAuth();
+  const axiosCommon = useAxios();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+  //   const { mutateAsync } = useMutation({
+  //     mutationFn: async (dataRoom) => {
+  //       const { data } = await axiosCommon.post(`/rooms`, dataRoom);
+  //       return data;
+  //     },
+  //     onSuccess: () => {
+  //       toast.success("Room Added Successfully!");
+  //       //  navigate("/");
+  //       setLoading(false);
+  //     },
+  //     onError: () => {
+  //       toast.error("Something went wrong!");
+  //     },
+  //   });
   const onSubmit = async (data) => {
-    console.log(data);
+    //     console.log(data);
+    //  const { "Room Name", name, password } = data;
+    let roomname = data["Room Name"];
+    let price = data["Price per Night"];
+    let desc = data["Short Description"];
+    let off = data["Special Offers"];
+    console.log(roomname, price, desc, off);
+    const host = {
+      name: user?.displayName,
+      email: user?.email,
+      image: user?.photoURL,
+    };
+    const imageFile = { image: data?.image[0] };
+    console.log(imageFile);
+
+    setLoading(true);
+    const result = await axiosCommon.post(image_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    // console.log(result.data)
+    if (result.data?.success) {
+      const dataRoom = {
+        roomname,
+        price: parseFloat(price),
+        desc,
+        off,
+        host,
+        image: result?.data?.data?.display_url,
+      };
+      const dataRes = await axiosCommon.post(`/rooms`, dataRoom);
+      //  console.log(dataRes.data);
+      if (dataRes.data.insertedId) {
+        setLoading(false);
+        toast.success("Room Added Successfully!");
+      }
+      console.table(dataRoom);
+    }
+    //  const image = result?.data?.data?.display_url;
+    //  await mutateAsync(image);
+
+    //  return console.log(result.data);
+
+    //  await mutateAsync(dataRoom);
+
+    //  console.error(error);
   };
+//   if (loading) return <Spinner fontSize={24} className="animate-spin m-auto" />;
   return (
     <>
       <div className="isolate bg-white px-6 py-4 sm:py-32 lg:px-8">
@@ -154,10 +225,15 @@ const AddRoomForm = () => {
           </div>
           <div className="mt-10">
             <button
+              disabled={loading}
               type="submit"
               className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              Add Room
+              {loading ? (
+                <Spinner className="animate-spin m-auto" />
+              ) : (
+                "Add Room"
+              )}
             </button>
           </div>
         </form>
