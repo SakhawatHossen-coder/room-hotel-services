@@ -8,12 +8,14 @@ import Register from "../pages/Register";
 import RoomDetails from "../pages/RoomDetails";
 import Statistics from "../pages/dashboard/Statistics";
 import DashboardLayout from "../layout/DashboardLayout";
+import Addroom from "../pages/dashboard/Addroom";
+import Error from "../pages/Error";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <p>404</p>,
+    errorElement: <Error />,
     children: [
       { index: true, element: <Home /> },
       {
@@ -41,6 +43,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Statistics />,
+      },
+      {
+        path: "addroom",
+        element: <Addroom />,
       },
     ],
   },
