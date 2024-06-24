@@ -4,11 +4,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import { Spinner } from "@material-tailwind/react";
+import useAxios from "../hooks/useAxios";
 
 export const Login = () => {
   const navigate = useNavigate();
   const { login, loading, setLoading, googleLogin } = useAuth();
   const location = useLocation();
+  const axiosCommon = useAxios();
   const {
     register,
     handleSubmit,
@@ -30,9 +32,20 @@ export const Login = () => {
   };
   const handleGoogleLogin = async () => {
     try {
-      await googleLogin();
-      navigate(location?.state || "/");
-      toast.success("login successful");
+      let googleUser = await googleLogin();
+      // return console.log(googleUser);
+      const regUser = {
+        email: googleUser?.user?.email,
+        name: googleUser?.user?.displayName,
+        image: googleUser?.user?.photoURL,
+        role: "Member",
+      };
+      const USER = await axiosCommon.post(`/reg-user`, regUser);
+      if (USER?.data?.insertedId) {
+        setLoading(false);
+        navigate(location?.state || "/");
+        toast.success("login successful");
+      }
     } catch (error) {
       console.error(error);
       toast.error(error.message);

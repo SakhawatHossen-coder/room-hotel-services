@@ -40,13 +40,14 @@ const Register = () => {
       const regUser = {
         email,
         name,
+        image,
         role: "Member",
       };
       const USER = await axiosCommon.post(`/reg-user`, regUser);
       if (USER?.data?.insertedId) {
         setLoading(false);
         toast.success("User Created Successfully!");
-        navigate("/");
+        navigate("/login");
       }
     } catch (err) {
       console.log(err);
