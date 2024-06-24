@@ -6,11 +6,11 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-
   updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
+
 
 const auth = getAuth(app);
 
@@ -61,7 +61,7 @@ const AuthProviders = ({ children }) => {
     logout,
     googleLogin,
     updateUserProfile,
-    setLoading
+    setLoading,
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>

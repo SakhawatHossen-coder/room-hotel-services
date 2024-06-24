@@ -14,6 +14,7 @@ const Rooms = () => {
       return data;
     },
   });
+  // console.log(rooms)
   const [sort, setSort] = useState("High");
   const [roomss, setRoomss] = useState([]);
   useEffect(() => {
